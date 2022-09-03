@@ -20,8 +20,8 @@ COPY ["RpsConsole2.sln", "."]
 #copy this file into the container => src/ApiLayer/ApiLayer.csproj
 COPY ["RpsConsole2/RpsConsole2.csproj", "RpsConsole2/"]
 COPY ["BusinessLayer/BusinessLayer.csproj","BusinessLayer/"]
-COPY ["ModelsLayer/ModelsLayer.csproj","ModelsLayer/"]
-COPY ["RepositoryAccessLayer/RepositoryAccessLayer.csproj","RepositoryAccessLayer/"]
+COPY ["Models/Models.csproj","Modelsr/"]
+COPY ["RepoLayer/RepoLayer.csproj","RepoLayer/"]
 
 # restore is the first command to running a .NET program. It restores the dependencies and references of the application
 # This command restores the app INSIDE tre container.
@@ -33,8 +33,8 @@ RUN dotnet restore "RpsConsole2\RpsConsole2.csproj"
 # so it's faster on rebuilding images to split the COPY into separate lines
 COPY RpsConsole2/ ./RpsConsole2/
 COPY BusinessLayer/ ./BusinessLayer/
-COPY ModelsLayer/ ./ModelsLayer/
-COPY RepositoryAccessLayer/ ./RepositoryAccessLayer/
+COPY Models/ ./Models/
+COPY RepoLayer/ ./RepoLayer/
 
 # cd into the ApiLayer folder.
 WORKDIR "/src/RpsConsole2"
